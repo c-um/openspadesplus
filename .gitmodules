@@ -4,3 +4,6 @@
 [submodule "Sources/enet"]
 	path = Sources/ENet
 	url = https://github.com/lsalzman/enet
+[submodule "vcpkg"]
+	path = vcpkg
+	url = https://github.com/microsoft/vcpkg
