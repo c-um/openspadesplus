@@ -35,7 +35,7 @@ build_script:
 
   ## vcpkg ##
   - "vcpkg update"
-  - "vcpkg install @vcpkg_x86-windows.txt" # TEMP - required by cmake in sdl2-image-fix-attempt
+ # - "vcpkg install @vcpkg_x86-windows.txt" # TEMP - required by cmake in sdl2-image-fix-attempt
   
   ## xiph libogg error 12175 fix (TLS 1.2 not enabled in AppVeyor) ##
   - mkdir "C:\projects\openspadesplus\vcpkg\downloads\"
