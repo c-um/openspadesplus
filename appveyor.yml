@@ -41,10 +41,5 @@ build_script:
   - mkdir "C:\projects\openspadesplus\vcpkg\downloads\"
   - curl "https://cdn.discordapp.com/attachments/545659735903567874/1096808186134134925/ogg-v1.3.5.tar.gz" -o "C:\projects\openspadesplus\vcpkg\downloads\xiph-ogg-v1.3.5.tar.gz"
 
-  ## attempt to fix "missing sdl2-image in path" by manually running cmake ##
-  - "mkdir openspades.mk"
-  - "cd openspades.mk"
-  - "cmake .. -A Win32 -D CMAKE_BUILD_TYPE=RelWithDebInfo -D VCPKG_TARGET_TRIPLET=x86-windows-static"
-
   ## actual build script ##
   - ps: "./build.ps1 -OpenSpadesFlavor P -URL https://github.com/nonperforming/openspadesplus.git -DirectoryName ../OpenSpadesPlus"
