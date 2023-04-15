@@ -30,6 +30,9 @@ build_script:
   - "git submodule init"
   - "git submodule update"
 
+  ## git stuff ##
+  - "git pull"
+
   ## vcpkg ##
   - "vcpkg update"
   #- "vcpkg install freetype:x86-windows-static"
