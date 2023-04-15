@@ -35,17 +35,8 @@ build_script:
 
   ## vcpkg ##
   - "vcpkg update"
-  #- "vcpkg install freetype:x86-windows-static"
-  #- "vcpkg install opusfile:x86-windows-static"
-  #- "vcpkg install opus:x86-windows-static "
-  #- "vcpkg install libogg:x86-windows-static"
-  #- "vcpkg install sdl2:x86-windows-static"
-  #- "vcpkg install libjpeg-turbo:x86-windows-static"
-  #- "vcpkg install sdl2-image[libjpeg-turbo]:x86-windows-static"
-  #- "vcpkg install glew:x86-windows-static"
-  #- "vcpkg install curl:x86-windows-static"
   
-  ## xiph libogg ##
+  ## xiph libogg error 12175 fix (TLS 1.2 not enabled in AppVeyor) ##
   - mkdir "C:\projects\openspadesplus\vcpkg\downloads\"
   - curl "https://cdn.discordapp.com/attachments/545659735903567874/1096808186134134925/ogg-v1.3.5.tar.gz" -o "C:\projects\openspadesplus\vcpkg\downloads\xiph-ogg-v1.3.5.tar.gz"
 
