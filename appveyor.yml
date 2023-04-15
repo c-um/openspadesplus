@@ -26,7 +26,21 @@ artifacts:
   openspadesplus/openspadesplus/openspades.mk/ #just incase
   
 build_script:
+  ## git submodules ##
   - "git submodule init"
   - "git submodule update"
+
+  ## vcpkg ##
   - "vcpkg update"
+  - "vcpkg install freetype:x86-windows-static"
+  - "vcpkg install opusfile:x86-windows-static"
+  - "vcpkg install opus:x86-windows-static "
+  - "vcpkg install libogg:x86-windows-static"
+  - "vcpkg install sdl2:x86-windows-static"
+  - "vcpkg install libjpeg-turbo:x86-windows-static"
+  - "vcpkg install sdl2-image[libjpeg-turbo]:x86-windows-static"
+  - "vcpkg install glew:x86-windows-static"
+  - "vcpkg install curl:x86-windows-static"
+  
+  ## actual build script ##
   - ps: "./build.ps1 -OpenSpadesFlavor P -URL https://github.com/nonperforming/openspadesplus.git -DirectoryName ../OpenSpadesPlus"
