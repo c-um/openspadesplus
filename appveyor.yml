@@ -10,9 +10,7 @@ branches:
 max_jobs: 2
 
 image:
-#- Visual Studio 2015
-#- macOS-BigSur
-- Ubuntu
+- Visual Studio 2015
 
 platform:
 - x86
@@ -25,59 +23,10 @@ matrix:
 
 artifacts:
   openspadesplus/openspades.mk/
-
-for:
--
-  matrix:
-    only:
-      - image: Ubuntu
-      - build_script:
-        - sh: "echo Installing dependencies"
-        - sh: "sudo apt-get update"
-        - sh: "sudo apt-get install pkg-config"
-        - sh: "sudo apt-get install libglew-dev"
-        - sh: "sudo apt-get install libcurl3-openssl-dev"
-        - sh: "sudo apt-get install libsdl2-image-dev"
-        - sh: "sudo apt-get install libalut-dev"
-        - sh: "sudo apt-get install libsdl2-dev"
-        - sh: "sudo apt-get install xdg-utils"
-        - sh: "sudo apt-get install libfreetype6-dev"
-        - sh: "sudo apt-get install libopus-dev"
-        - sh: "sudo apt-get install libopusfile-dev"
-        - sh: "sudo apt-get install imagemagick"
-        - sh: "sudo apt-get install libjpeg-dev"
-        - sh: "sudo apt-get install libxinerama-dev"
-        - sh: "sudo apt-get install libxft-dev"
-        - sh: "echo Finished!"
-        - sh: "echo Building OpenSpades+"
-        - sh: "git clone https://github.com/nonperforming/openspadesplus"
-        - sh: "cd openspadesplus"
-        - sh: "ls"
-        - sh: "./build.sh"
-#  - matrix:
-#    only:
-#      - image: macOS-BigSur
-#      - build_script:
-#        - sh:
-#          - brew install pkg-config
-#          - git clone https://github.com/nonperforming/openspadesplus
-#          - cd openspadesplus
-#          - vcpkg/bootstrap-vcpkg.sh
-#          - vcpkg/vcpkg install @vcpkg_x86_64-darwin.txt
-#          - mkdir openspades.mk
-#          - cd openspades.mk
-#          - cmake -G Ninja .. -D CMAKE_BUILD_TYPE=RelWithDebInfo -D CMAKE_OSX_ARCHITECTURES=x86_64 -D CMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake -D VCPKG_TARGET_TRIPLET=x64-osx
-#          - ninja
-#  - matrix:
-#    only:
-#      - image: Visual Studio 2015
-#      - build_script:
-#        - ps:
-#          - git clone https://github.com/nonperforming/openspadesplus
-#          - cd openspadesplus
-#          - vcpkg/bootstrap-vcpkg.bat
-#          - vcpkg/vcpkg install @vcpkg_x86-windows.txt
-#          - mkdir openspades.mk
-#          - cd openspades.mk
-#          - cmake -A Win32 -D CMAKE_BUILD_TYPE=RelWithDebInfo -D VCPKG_TARGET_TRIPLET=x86-windows-static
-
+  openspadesplus/openspadesplus/openspades.mk/ #just incase
+  
+build_script:
+  - "git submodule init"
+  - "git submodule update"
+  - "vcpkg update"
+  - ps: "./build.ps1 -OpenSpadesFlavor P -URL https://github.com/nonperforming/openspadesplus.git -DirectoryName ../OpenSpadesPlus"
