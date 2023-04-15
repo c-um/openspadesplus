@@ -31,7 +31,7 @@ build_script:
   - "git submodule update"
 
   ## git stuff ##
-  - "git pull"
+  - "git pull origin main"
 
   ## vcpkg ##
   - "vcpkg update"
