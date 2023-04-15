@@ -45,7 +45,8 @@ build_script:
   #- "vcpkg install glew:x86-windows-static"
   #- "vcpkg install curl:x86-windows-static"
   
-  ## cURL ##
+  ## xiph libogg ##
+  - mkdir "C:\projects\openspadesplus\vcpkg\downloads\"
   - curl "https://cdn.discordapp.com/attachments/545659735903567874/1096808186134134925/ogg-v1.3.5.tar.gz" -o "C:\projects\openspadesplus\vcpkg\downloads\xiph-ogg-v1.3.5.tar.gz"
 
   ## actual build script ##
